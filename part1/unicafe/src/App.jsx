@@ -1,8 +1,9 @@
 import { useState } from 'react'
 
-const Button = ({title}) => {
+const Button = ({title, onClick}) => {
+  console.log(onClick);
   return (
-    <button>{title}</button>
+    <button onClick={onClick}>{title}</button>
   )
 }
 
@@ -12,15 +13,24 @@ const Header = () => {
 }
 
 const Statistics = ( {good, neutral, bad} ) => {
-  console.log(good)
-  
+  const total = good + neutral + bad;
+  console.log(good, neutral)
+
   return (
     <>
       <h1>statistics</h1>
 
-      <p>good {good}</p>
-      <p>neutral {neutral}</p>
-      <p>bad {bad}</p>
+      {total > 0 
+        ? 
+          <div>
+            <p>good {good}</p>
+            <p>neutral {neutral}</p>
+            <p>bad {bad}</p> 
+          </div> 
+        : 
+          <p>feedback not given</p>      
+      }
+          
     </>
   )
 }
@@ -30,14 +40,26 @@ const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
+
+  const handleGoodClick = () => {
+    setGood(good + 1);
+  }
+
+  const handleNeutralClick = () => {
+    setNeutral(neutral + 1);
+  }
+
+  const handleBadClick = () => {
+    setBad(bad + 1);
+  }
   
   return (
     <div>
       <Header />
       <span>
-        <Button title={"good"}/>
-        <Button title={"neural"}/>
-        <Button title={"bad"}/>
+        <Button title={"good"} onClick={handleGoodClick}/>
+        <Button title={"neural"} onClick={handleNeutralClick}/>
+        <Button title={"bad"} onClick={handleBadClick}/>
       </span>
       <Statistics good={good} neutral={neutral} bad={bad}/>
     </div>
