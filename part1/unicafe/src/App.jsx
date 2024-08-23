@@ -12,6 +12,14 @@ const Header = () => {
     <h1>give feedback</h1>)
 }
 
+const StatisticLine = ( {text, type} ) => {
+  return ( 
+    <>
+      <p>{text} {type}</p>
+    </>
+  )
+}
+
 const Statistics = ( {good, neutral, bad} ) => {
   const total = good + neutral + bad;
   console.log(good, neutral)
@@ -23,9 +31,9 @@ const Statistics = ( {good, neutral, bad} ) => {
       {total > 0 
         ? 
           <div>
-            <p>good {good}</p>
-            <p>neutral {neutral}</p>
-            <p>bad {bad}</p> 
+            <StatisticLine text="good" type={good} />
+            <StatisticLine text="neutral" type={neutral} />
+            <StatisticLine text="bad" type={bad} />
           </div> 
         : 
           <p>feedback not given</p>      
