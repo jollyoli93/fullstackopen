@@ -21,19 +21,22 @@ const StatisticLine = ( {text, type} ) => {
 }
 
 const Statistics = ( {good, neutral, bad} ) => {
-  const total = good + neutral + bad;
-  console.log(good, neutral)
+  const all = good + neutral + bad;
+  const average = (all / 3);
+  const positive = ((good/all)*100).toFixed(1)
 
   return (
     <>
       <h1>statistics</h1>
 
-      {total > 0 
+      {all > 0 
         ? 
           <div>
             <StatisticLine text="good" type={good} />
             <StatisticLine text="neutral" type={neutral} />
             <StatisticLine text="bad" type={bad} />
+            <StatisticLine text="all" type={all} />
+            <StatisticLine text="positive" type={positive} />
           </div> 
         : 
           <p>feedback not given</p>      
