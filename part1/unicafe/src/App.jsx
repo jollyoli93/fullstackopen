@@ -23,7 +23,22 @@ const StatisticLine = ( {text, type} ) => {
 const Statistics = ( {good, neutral, bad} ) => {
   const all = good + neutral + bad;
   const average = (all / 3);
-  const positive = ((good/all)*100).toFixed(1)
+  const aveRounded = () => {
+    if (percent % 10 === 0) {
+        return (average).toFixed(0)
+      } else {
+        return (average).toFixed(1)
+      }
+    }
+
+  const percent = (good/all)*100
+  const positive = () => {
+    if (percent % 10 === 0) {
+        return (percent).toFixed(0) + "%"
+      } else {
+        return (percent).toFixed(1) + "%"
+      }
+    }
 
   return (
     <>
@@ -36,7 +51,8 @@ const Statistics = ( {good, neutral, bad} ) => {
             <StatisticLine text="neutral" type={neutral} />
             <StatisticLine text="bad" type={bad} />
             <StatisticLine text="all" type={all} />
-            <StatisticLine text="positive" type={positive} />
+            <StatisticLine text="average" type={aveRounded()} />
+            <StatisticLine text="positive" type={positive()} />
           </div> 
         : 
           <p>feedback not given</p>      
