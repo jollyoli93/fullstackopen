@@ -24,7 +24,7 @@ const Statistics = ( {good, neutral, bad} ) => {
   const all = good + neutral + bad;
   const average = (all / 3);
   const aveRounded = () => {
-    if (percent % 10 === 0) {
+    if (average % 1 === 0) {
         return (average).toFixed(0)
       } else {
         return (average).toFixed(1)
