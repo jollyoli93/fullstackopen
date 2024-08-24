@@ -16,7 +16,7 @@ const VoteButton = ( {onClick} ) => {
 
 const App = () => {
   const [selected, setSelected] = useState(0)
-  const [votes, setVotes] = useState({0:0, 1:0, 2:0, 3:0, 4:0, 5:0, 6:0})
+  const [votes, setVotes] = useState({0:0, 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0});
   console.log(selected, votes)
 
   const anecdotes = [
@@ -30,18 +30,28 @@ const App = () => {
     'The only way to go fast, is to go well.'
   ]
 
-  const handleClick = () => {
+  const handleAnecdoteClick = () => {
     let randint = Math.floor(Math.random() * anecdotes.length)
     setSelected((current) => current = randint)
-    console.log(selected, randint)
+    // console.log(selected, randint)
   }
 
+  const handleVoteClick = () => {
+    console.log("votes", selected, votes[selected])
+    
+    setVotes( (preVotes) =>
+        ({...preVotes,
+          [selected] : preVotes[selected] + 1
+        })
+    )
+  }
+ 
   return (
     <div>
       <div>{anecdotes[selected]}</div>
       <span>
-        <VoteButton />
-        <NextAnecdoeButton onClick={handleClick}/>
+        <VoteButton onClick={handleVoteClick}/>
+        <NextAnecdoeButton onClick={handleAnecdoteClick}/>
       </span>
     </div>
   )
