@@ -45,14 +45,40 @@ const App = () => {
         })
     )
   }
- 
+
+  const mostVotes = () => {
+    // Find the key with the maximum votes
+    const top = Object.keys(votes).reduce((a, b) => (votes[a] > votes[b] ? a : b));
+  
+    // Check if the maximum votes count is 0
+    if (votes[top] === 0) {
+      return null;
+    } else {
+      return top; 
+    }
+  };
+  
+
+  const top = mostVotes()
+  console.log("top", top)
+  
   return (
     <div>
+      <h2>Anectodes</h2>
       <div>{anecdotes[selected]}</div>
       <span>
         <VoteButton onClick={handleVoteClick}/>
         <NextAnecdoeButton onClick={handleAnecdoteClick}/>
       </span>
+      <h2>Most Votes</h2>
+      {top !== null ? (
+        <div>
+          <div>{anecdotes[top]}</div>
+        </div>) :
+        <div>
+          No votes
+        </div>
+        }
     </div>
   )
 }
