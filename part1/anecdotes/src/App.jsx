@@ -64,16 +64,16 @@ const App = () => {
   
   return (
     <div>
-      <h2>Anectodes</h2>
+      <h2>Anectode of the day</h2>
       <div>{anecdotes[selected]}</div>
       <span>
         <VoteButton onClick={handleVoteClick}/>
         <NextAnecdoeButton onClick={handleAnecdoteClick}/>
       </span>
-      <h2>Most Votes</h2>
+      <h2>Anecdote with most votes</h2>
       {top !== null ? (
         <div>
-          <div>{anecdotes[top]}</div>
+          <div>{anecdotes[top]} has {votes[top]} votes</div>
         </div>) :
         <div>
           No votes
