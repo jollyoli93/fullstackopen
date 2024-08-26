@@ -9,7 +9,7 @@ const Total = ( {parts} ) => {
     return (sum + part.exercises)
   }, 0)
 
-  return <bold>total of {sum} exercises</bold>
+  return <b>total of {sum} exercises</b>
 }
 
 const Content = ({ parts }) => {
