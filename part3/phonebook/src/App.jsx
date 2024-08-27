@@ -8,9 +8,14 @@ const App = () => {
 
   const addName = (event) => {
     event.preventDefault();
-    setPersons(
-      persons.concat({name:newName})
-    )  
+    
+    persons.map((person) => 
+      (newName === person.name) ?
+      alert("Name already taken") :
+      setPersons(
+        persons.concat({name:newName})
+      ))
+      
     setNewName('');
   }
 
@@ -28,7 +33,6 @@ const App = () => {
                   onChange={handleNameChange}
                 />
         </div>
-        <div>debug: {newName}</div>
         <div>
           <button type="submit">add</button>
         </div>
