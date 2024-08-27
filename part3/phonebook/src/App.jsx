@@ -20,16 +20,16 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <form onClick={addName}>
+      <form onSubmit={addName}>
         <div>
           name: <input 
                   value={newName}
-                  onClick={handleNameChange}
+                  onChange={handleNameChange}
                 />
         </div>
         <div>debug: {newName}</div>
         <div>
-          <button type="submit" onClick={handleNameChange}>add</button>
+          <button type="submit">add</button>
         </div>
       </form>
       <h2>Numbers</h2>
