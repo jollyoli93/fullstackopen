@@ -9,7 +9,7 @@ const App = () => {
   const addName = (event) => {
     event.preventDefault();
     console.log("button clicked", event.target);
-        
+    setNewName('');
   }
 
   const handleNameChange = (event) => {
