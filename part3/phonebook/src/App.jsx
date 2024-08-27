@@ -8,12 +8,13 @@ const App = () => {
 
   const addName = (event) => {
     event.preventDefault();
-    console.log("button clicked", event.target);
+    setPersons(
+      persons.concat({name:newName})
+    )  
     setNewName('');
   }
 
   const handleNameChange = (event) => {
-    console.log(event.target.value); 
     setNewName(event.target.value)
   }
 
