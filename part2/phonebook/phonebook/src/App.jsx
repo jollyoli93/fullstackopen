@@ -8,16 +8,9 @@ const App = () => {
 
   const addName = (event) => {
     event.preventDefault();
-    
-    persons.map((person) => 
-      (newName === person.name) ?
-      alert("Name already taken") :
-      setPersons(
-        persons.concat({name:newName})
-      ))
-      
+    setPersons(persons.concat({name:newName}))        
     setNewName('');
-  }
+    }
 
   const handleNameChange = (event) => {
     setNewName(event.target.value)
